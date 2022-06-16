@@ -2,6 +2,7 @@ package com.example.shop24.dtos;
 
 import com.example.shop24.enums.EStatus;
 
+import java.util.List;
 import java.util.UUID;
 
 public class OrderDto {
@@ -14,6 +15,16 @@ public class OrderDto {
     private EStatus status;
 
     private UUID client;
+
+    private List<DetailsDto> details;
+
+    public List<DetailsDto> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<DetailsDto> details) {
+        this.details = details;
+    }
 
     public OrderDto() {
     }

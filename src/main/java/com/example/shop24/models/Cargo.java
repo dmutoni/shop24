@@ -20,9 +20,6 @@ public class Cargo extends  Address {
     @GeneratedValue(generator = "UUIDGenerator")
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
     private Integer quantity;
     private Double totalCost;
 
@@ -55,10 +52,6 @@ public class Cargo extends  Address {
         this.id = id;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
     public Integer getQuantity() {
         return quantity;
     }
@@ -75,7 +68,4 @@ public class Cargo extends  Address {
         this.totalCost = totalCost;
     }
 
-    public Company getCompany() {
-        return company;
-    }
 }

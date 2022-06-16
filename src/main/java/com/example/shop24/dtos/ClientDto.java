@@ -1,9 +1,8 @@
 package com.example.shop24.dtos;
 
 import com.example.shop24.enums.EGender;
-import com.example.shop24.enums.ERole;
 
-public class UserDto {
+public class ClientDto {
     private String firstName;
 
     private String lastName;
@@ -22,7 +21,7 @@ public class UserDto {
 
     private ERole role = ERole.CLIENT;
 
-    public UserDto() {
+    public ClientDto() {
     }
 
     public Double getLongitude() {

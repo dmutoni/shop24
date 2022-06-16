@@ -2,9 +2,12 @@ package com.example.shop24.models;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -22,16 +25,17 @@ public class Details {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "cargo_id")
-    private Cargo cargo;
-
-    @ManyToOne
     @JoinColumn(name = "drink_id")
     private Drink drink;
 
     private Integer quantity;
 
     private Double amount;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     public Details() {
     }
@@ -46,10 +50,6 @@ public class Details {
 
     public void setOrder(Order order) {
         this.order = order;
-    }
-
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
     }
 
     public void setDrink(Drink drink) {
@@ -76,12 +76,23 @@ public class Details {
         return drink;
     }
 
-
-    public Cargo getCargo() {
-        return cargo;
-    }
-
     public Order getOrder() {
         return order;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

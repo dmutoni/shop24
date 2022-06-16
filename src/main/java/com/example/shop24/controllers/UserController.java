@@ -1,8 +1,8 @@
 package com.example.shop24.controllers;
 
 import com.example.shop24.dtos.ResponseDto;
-import com.example.shop24.models.User;
-import com.example.shop24.serviceImpl.UserServiceImpl;
+import com.example.shop24.models.Client;
+import com.example.shop24.serviceImpl.ClientServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,26 +16,26 @@ import java.util.UUID;
 @Controller
 @RestController("/users")
 public class UserController {
-    private final UserServiceImpl userService;
+    private final ClientServiceImpl userService;
 
-    public UserController(UserServiceImpl userService) {
+    public UserController(ClientServiceImpl userService) {
         this.userService = userService;
     }
     @GetMapping("/all")
     public ResponseEntity<ResponseDto> getAll() {
-        List<User> users = userService.findAll();
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched users", users), HttpStatus.OK);
+        List<Client> clients = userService.findAll();
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched clients", clients), HttpStatus.OK);
     }
 
     @GetMapping("/:id")
     public ResponseEntity<ResponseDto> getById(@PathVariable UUID id) throws Exception {
-        User user = userService.findById(id);
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched user", user), HttpStatus.OK);
+        Client client = userService.findById(id);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched client", client), HttpStatus.OK);
     }
 
     @GetMapping("/:id")
     public ResponseEntity<ResponseDto> getClosestCargoCompanies(@PathVariable UUID id) throws Exception {
-        User user = userService.findById(id);
-        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully near cargo companies in 3 km user", user), HttpStatus.OK);
+        Client client = userService.findById(id);
+        return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully near cargo companies in 3 km client", client), HttpStatus.OK);
     }
 }

@@ -7,8 +7,6 @@ import java.util.UUID;
 public class DetailsDto {
     private Order order;
 
-    private UUID cargo;
-
     private UUID drink;
 
     private Integer quantity;
@@ -24,14 +22,6 @@ public class DetailsDto {
 
     public void setOrder(Order order) {
         this.order = order;
-    }
-
-    public UUID getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(UUID cargo) {
-        this.cargo = cargo;
     }
 
     public UUID getDrink() {

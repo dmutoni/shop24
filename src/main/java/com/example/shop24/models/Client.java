@@ -1,8 +1,7 @@
 package com.example.shop24.models;
 
-import com.example.shop24.dtos.UserDto;
+import com.example.shop24.dtos.ClientDto;
 import com.example.shop24.enums.EGender;
-import com.example.shop24.enums.ERole;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "user")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class User extends Address{
+public class Client extends Address{
     @Id
     @Column(name = "id", nullable = false)
     @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
@@ -35,17 +34,15 @@ public class User extends Address{
 
     private EGender gender;
 
-    private ERole role = ERole.CLIENT;
-
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public User() {
+    public Client() {
     }
 
-    public User(UserDto dto) {
+    public Client(ClientDto dto) {
         this.email = dto.getEmail();
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
@@ -54,14 +51,6 @@ public class User extends Address{
         this.password = dto.getPassword();
         this.setLongitude(dto.getLongitude());
         this.setLatitude(dto.getLatitude());
-    }
-
-    public ERole getRole() {
-        return role;
-    }
-
-    public void setRole(ERole role) {
-        this.role = role;
     }
 
     public String getFirstName() {

@@ -1,21 +1,22 @@
 package com.example.shop24.dtos;
 
+import java.util.List;
 import java.util.UUID;
 
-public class CargoDto {
-    private UUID company;
+public class CargoDto extends AddressDto{
     private Integer quantity;
     private Double totalCost;
+    private List<DetailsDto> details;
 
     public CargoDto() {
     }
 
-    public UUID getCompany() {
-        return company;
+    public List<DetailsDto> getDetails() {
+        return details;
     }
 
-    public void setCompany(UUID company) {
-        this.company = company;
+    public void setDetails(List<DetailsDto> details) {
+        this.details = details;
     }
 
     public Integer getQuantity() {
