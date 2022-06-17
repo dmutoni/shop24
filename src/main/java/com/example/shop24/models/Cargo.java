@@ -4,16 +4,18 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "cargo")
+@Table(name = "cargo_tbl")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Cargo extends  Address {
+public class Cargo {
     @Id
     @Column(name = "id", nullable = false)
     @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
@@ -23,10 +25,25 @@ public class Cargo extends  Address {
     private Integer quantity;
     private Double totalCost;
 
+    private Double longitude;
+
+    private Double latitude;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Cargo(Integer quantity, Double totalCost, Double longitude, Double latitude) {
+        this.quantity = quantity;
+        this.totalCost = totalCost;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
+    public Cargo() {
+
+    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

@@ -9,14 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Controller
-@RestController("/orders")
+@RestController()
+@RequestMapping("/api/cargo")
 public class CargoController {
     private final CargoServiceImpl cargoService;
 
@@ -33,7 +34,7 @@ public class CargoController {
         Cargo cargo = cargoService.findById(id);
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched cargos", cargo), HttpStatus.OK);
     }
-    @GetMapping("/:id")
+    @GetMapping("/specific-range/:id")
     public ResponseEntity<ResponseDto> getOrdersInSpecificRange(@PathVariable UUID id, LocalDateTime from, LocalDateTime to) throws Exception {
         List<Details> details = cargoService.getBySpecificRange(id, from, to);
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched cargos", details), HttpStatus.OK);

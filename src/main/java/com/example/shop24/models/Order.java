@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_tbl")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Order {
     @Id

@@ -4,7 +4,7 @@ import com.example.shop24.exceptions.ResourceNotFoundException;
 import com.example.shop24.models.Cargo;
 import com.example.shop24.models.Client;
 import com.example.shop24.repositories.CargoRepository;
-import com.example.shop24.repositories.UserRepository;
+import com.example.shop24.repositories.ClientRepository;
 import com.example.shop24.services.ClientService;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +14,10 @@ import java.util.UUID;
 @Service
 public class ClientServiceImpl implements ClientService {
 
-    private final UserRepository userRepository;
+    private final ClientRepository userRepository;
     private final CargoRepository cargoRepository;
 
-    public ClientServiceImpl(UserRepository userRepository, CargoRepository cargoRepository) {
+    public ClientServiceImpl(ClientRepository userRepository, CargoRepository cargoRepository) {
         this.userRepository = userRepository;
         this.cargoRepository = cargoRepository;
     }

@@ -8,17 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.UUID;
 
-@Controller
-@RestController("/users")
-public class UserController {
+@RestController()
+@RequestMapping("/api/clients")
+public class ClientController {
     private final ClientServiceImpl userService;
 
-    public UserController(ClientServiceImpl userService) {
+    public ClientController(ClientServiceImpl userService) {
         this.userService = userService;
     }
     @GetMapping("/all")
@@ -33,7 +34,7 @@ public class UserController {
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully fetched client", client), HttpStatus.OK);
     }
 
-    @GetMapping("/:id")
+    @GetMapping("/nearest/:id")
     public ResponseEntity<ResponseDto> getClosestCargoCompanies(@PathVariable UUID id) throws Exception {
         Client client = userService.findById(id);
         return new ResponseEntity<>(new ResponseDto(HttpStatus.OK, "Successfully near cargo companies in 3 km client", client), HttpStatus.OK);

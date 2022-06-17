@@ -11,15 +11,11 @@ public class ClientDto {
 
     private String username;
 
-    private String password;
-
     private EGender gender;
 
     private Double longitude;
 
     private  Double latitude;
-
-    private ERole role = ERole.CLIENT;
 
     public ClientDto() {
     }
@@ -72,27 +68,11 @@ public class ClientDto {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public EGender getGender() {
         return gender;
     }
 
     public void setGender(EGender gender) {
         this.gender = gender;
-    }
-
-    public ERole getRole() {
-        return role;
-    }
-
-    public void setRole(ERole role) {
-        this.role = role;
     }
 }

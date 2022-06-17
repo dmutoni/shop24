@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "cargo")
+@Table(name = "order_details_tbl")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Details {
     @Id
@@ -25,6 +25,10 @@ public class Details {
     private Order order;
 
     @ManyToOne
+    @JoinColumn(name = "cargo_id")
+    private Cargo cargo;
+
+    @ManyToOne
     @JoinColumn(name = "drink_id")
     private Drink drink;
 
@@ -36,6 +40,10 @@ public class Details {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Cargo getCargo() {
+        return cargo;
+    }
 
     public Details() {
     }

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "drink")
+@Table(name = "drink_tbl")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Drink {
     @Id

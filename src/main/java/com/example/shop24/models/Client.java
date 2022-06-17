@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(name = "clients_tbl")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Client extends Address{
+public class Client {
     @Id
     @Column(name = "id", nullable = false)
     @GenericGenerator(name = "UUIDGenerator", strategy = "uuid2")
@@ -30,9 +30,11 @@ public class Client extends Address{
 
     private String username;
 
-    private String password;
-
     private EGender gender;
+
+    private Double longitude;
+
+    private Double latitude;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -42,15 +44,52 @@ public class Client extends Address{
     public Client() {
     }
 
+    public Client(String firstName, String lastName, String email, String username, EGender gender, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.gender = gender;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Client(Double longitude, Double latitude, String firstName, String lastName, String email, String username, EGender gender) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.gender = gender;
+    }
+
     public Client(ClientDto dto) {
         this.email = dto.getEmail();
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
         this.gender = dto.getGender();
         this.username  = dto.getUsername();
-        this.password = dto.getPassword();
-        this.setLongitude(dto.getLongitude());
-        this.setLatitude(dto.getLatitude());
+        this.latitude = dto.getLongitude();
+        this.longitude = dto.getLatitude();
+    }
+
+
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
     public String getFirstName() {
@@ -83,14 +122,6 @@ public class Client extends Address{
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public EGender getGender() {

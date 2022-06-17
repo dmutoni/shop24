@@ -4,10 +4,12 @@ package com.example.shop24.repositories;
 import com.example.shop24.models.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
+@Repository
 public interface OrderRepository extends JpaRepository<Order, UUID> {
     @Query(nativeQuery = true, value = "select * from order where status = 'PAID' order by quantity desc limit 10")
     List<Order> findTopTenPaid();
