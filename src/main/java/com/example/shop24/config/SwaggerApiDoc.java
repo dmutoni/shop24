@@ -51,11 +51,13 @@ public class SwaggerApiDoc {
 
     private ApiInfo appInfo() {
         return new ApiInfo(
-                "ICP apis documentation",
-                "Official documentation of icps project written in Spring boot and postgresql",
+                "Shop24 documentation",
+                "Shop24 is a soft drinks wholesaler based in Kigali. They would like to avail their services to public by providing a white-label solution to the\n" +
+                        "existing retailer companies/hotels. Practically, they will build a set of APIs that hotels will use to manage their requests of buying from\n" +
+                        "Shop24 and transport to their clients. They would like your help building these APIs and document them using swagger",
                 "1.0.0",
-                "https://github.com/hillsDevOrg/pboard-backend-v2/",
-                new Contact("ICPS Project", "https://icpportal.rw/", "icps@compassion.rw"),
+                "https://github.com/dmutoni/shop24",
+                new Contact("SHOP 24 Project", "https://shop.rw/", "shop@gmail.com"),
                 "MIT",
                 "https://github.com/veritem/springboot-template/blob/main/LICENSE",
                 Collections.emptyList()
