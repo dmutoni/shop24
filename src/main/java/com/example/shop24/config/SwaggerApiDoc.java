@@ -59,7 +59,7 @@ public class SwaggerApiDoc {
                 "https://github.com/dmutoni/shop24",
                 new Contact("SHOP 24 Project", "https://shop.rw/", "shop@gmail.com"),
                 "MIT",
-                "https://github.com/veritem/springboot-template/blob/main/LICENSE",
+                "https://github.com/dmutoni/shop24/blob/main/LICENSE",
                 Collections.emptyList()
         );
     }
